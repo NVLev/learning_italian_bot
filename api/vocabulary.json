@@ -1,0 +1,1910 @@
+{
+    "Дни недели, месяцы, времена года": [
+        {
+            "italian": "lunedì",
+            "russian": "понедельник"
+        },
+        {
+            "italian": "martedì",
+            "russian": "вторник"
+        },
+        {
+            "italian": "mercoledì",
+            "russian": "среда"
+        },
+        {
+            "italian": "giovedì",
+            "russian": "четверг"
+        },
+        {
+            "italian": "venerdì",
+            "russian": "пятница"
+        },
+        {
+            "italian": "sabato",
+            "russian": "суббота"
+        },
+        {
+            "italian": "domenica",
+            "russian": "воскресенье"
+        },
+        {
+            "italian": "gennaio",
+            "russian": "января"
+        },
+        {
+            "italian": "febbraio",
+            "russian": "февраль"
+        },
+        {
+            "italian": "marzo",
+            "russian": "март"
+        },
+        {
+            "italian": "aprile",
+            "russian": "Апрель"
+        },
+        {
+            "italian": "maggio",
+            "russian": "май"
+        },
+        {
+            "italian": "giugno",
+            "russian": "Июнь"
+        },
+        {
+            "italian": "luglio",
+            "russian": "Июль"
+        },
+        {
+            "italian": "agosto",
+            "russian": "Август"
+        },
+        {
+            "italian": "settembre",
+            "russian": "сентябрь"
+        },
+        {
+            "italian": "ottobre",
+            "russian": "Октябрь"
+        },
+        {
+            "italian": "novembre",
+            "russian": "ноябрь"
+        },
+        {
+            "italian": "dicembre",
+            "russian": "декабрь"
+        },
+        {
+            "italian": "la primavera",
+            "russian": "весна"
+        },
+        {
+            "italian": "l’estate",
+            "russian": "лето"
+        },
+        {
+            "italian": "l’autunno",
+            "russian": "осень"
+        },
+        {
+            "italian": "l’inverno",
+            "russian": "зима"
+        }
+    ],
+    "Семья": [
+        {
+            "italian": "la famiglia",
+            "russian": "семья"
+        },
+        {
+            "italian": "la moglie",
+            "russian": "жена"
+        },
+        {
+            "italian": "il marito",
+            "russian": "муж"
+        },
+        {
+            "italian": "la matrign",
+            "russian": "мачеха"
+        },
+        {
+            "italian": "il patrigno",
+            "russian": "отчим"
+        },
+        {
+            "italian": "divorziato",
+            "russian": "разведенный"
+        },
+        {
+            "italian": "sposato",
+            "russian": "женатый"
+        },
+        {
+            "italian": "il figlio",
+            "russian": "сын"
+        },
+        {
+            "italian": "la figlia",
+            "russian": "дочь"
+        },
+        {
+            "italian": "la nipote",
+            "russian": "племянница"
+        },
+        {
+            "italian": "il nipote",
+            "russian": "племянник"
+        },
+        {
+            "italian": "il cognato",
+            "russian": "шурин"
+        },
+        {
+            "italian": "la cognata",
+            "russian": "невестка"
+        },
+        {
+            "italian": "il suocero",
+            "russian": "тесть"
+        },
+        {
+            "italian": "la suocera",
+            "russian": "теща"
+        },
+        {
+            "italian": "il fratello",
+            "russian": "брат"
+        },
+        {
+            "italian": "la sorella",
+            "russian": "сестра"
+        },
+        {
+            "italian": "la madre",
+            "russian": "мать"
+        },
+        {
+            "italian": "il padre",
+            "russian": "отец"
+        },
+        {
+            "italian": "i genitori",
+            "russian": "родители"
+        },
+        {
+            "italian": "il cugino",
+            "russian": "кузен"
+        },
+        {
+            "italian": "lo zio",
+            "russian": "дядя"
+        },
+        {
+            "italian": "la zia",
+            "russian": "тетя"
+        },
+        {
+            "italian": "il nonno",
+            "russian": "дедушка"
+        },
+        {
+            "italian": "la nonna",
+            "russian": "бабушка"
+        },
+        {
+            "italian": "i nonni",
+            "russian": "бабушка и дедушка"
+        }
+    ],
+    "Одежда": [
+        {
+            "italian": "l’abbigliamento",
+            "russian": "одежда"
+        },
+        {
+            "italian": "la camicia",
+            "russian": "рубашка"
+        },
+        {
+            "italian": "la maglietta/la t-shirt",
+            "russian": "футболка"
+        },
+        {
+            "italian": "il pullover/il maglione",
+            "russian": "пуловер"
+        },
+        {
+            "italian": "i pantaloncini/i calzoncini",
+            "russian": "шорты"
+        },
+        {
+            "italian": "la felpa",
+            "russian": "трикотажная рубашка"
+        },
+        {
+            "italian": "i pantaloni della tuta",
+            "russian": "спортивные штаны"
+        },
+        {
+            "italian": "i pantaloni",
+            "russian": "штаны"
+        },
+        {
+            "italian": "la camicetta",
+            "russian": "блузка"
+        },
+        {
+            "italian": "la gonna",
+            "russian": "юбка"
+        },
+        {
+            "italian": "il giubbotto/il giubbino",
+            "russian": "спортивное пальто"
+        },
+        {
+            "italian": "il jeans",
+            "russian": "джинсы"
+        },
+        {
+            "italian": "il vestito/l'abito/ il completo",
+            "russian": "костюм"
+        },
+        {
+            "italian": "il vestito/l'abito",
+            "russian": "платье"
+        },
+        {
+            "italian": "il panciotto/il gilet",
+            "russian": "жилет"
+        },
+        {
+            "italian": "la tuta",
+            "russian": "комбинезон"
+        },
+        {
+            "italian": "lo smoking",
+            "russian": "смокинг"
+        },
+        {
+            "italian": "l'uniforme",
+            "russian": "униформа"
+        },
+        {
+            "italian": "la canottiera",
+            "russian": "майка"
+        },
+        {
+            "italian": "i calzini",
+            "russian": "носки"
+        },
+        {
+            "italian": "i pantaloncini/i calzoncini",
+            "russian": "шорты"
+        }
+    ],
+    "Цвета": [
+        {
+            "italian": "il colore",
+            "russian": "цвет"
+        },
+        {
+            "italian": "blu",
+            "russian": "синий"
+        },
+        {
+            "italian": "blu scuro",
+            "russian": "темно-синий"
+        },
+        {
+            "italian": "luce blu",
+            "russian": "голубой"
+        },
+        {
+            "italian": "turchese",
+            "russian": "бирюзовый"
+        },
+        {
+            "italian": "grigio",
+            "russian": "серый"
+        },
+        {
+            "italian": "alzavola",
+            "russian": "бирюзовый"
+        },
+        {
+            "italian": "arancione",
+            "russian": "оранжевый"
+        },
+        {
+            "italian": "porpora",
+            "russian": "фиолетовый"
+        },
+        {
+            "italian": "verde",
+            "russian": "зеленый"
+        },
+        {
+            "italian": "beige",
+            "russian": "бежевый"
+        },
+        {
+            "italian": "rosa",
+            "russian": "розовый"
+        },
+        {
+            "italian": "marrone",
+            "russian": "коричневый"
+        },
+        {
+            "italian": "giallo",
+            "russian": "желтый"
+        },
+        {
+            "italian": "rosso",
+            "russian": "красный"
+        },
+        {
+            "italian": "bianco",
+            "russian": "белый"
+        },
+        {
+            "italian": "nero",
+            "russian": "черный"
+        }
+    ],
+    "Чувства": [
+        {
+            "italian": "sentimenti",
+            "russian": "чувства"
+        },
+        {
+            "italian": "caldo",
+            "russian": "горячий"
+        },
+        {
+            "italian": "assetato",
+            "russian": "хотящий пить"
+        },
+        {
+            "italian": "assonnato",
+            "russian": "сонный"
+        },
+        {
+            "italian": "freddo",
+            "russian": "холодный"
+        },
+        {
+            "italian": "affamato",
+            "russian": "голодный"
+        },
+        {
+            "italian": "pieno",
+            "russian": "полный"
+        },
+        {
+            "italian": "confortevole",
+            "russian": "удобный"
+        },
+        {
+            "italian": "scomodo",
+            "russian": "неудобный"
+        },
+        {
+            "italian": "disgustato/disgustata",
+            "russian": "чувствующий отвращение"
+        },
+        {
+            "italian": "calma",
+            "russian": "спокойный"
+        },
+        {
+            "italian": "nervoso",
+            "russian": "нервный"
+        },
+        {
+            "italian": "nel dolore",
+            "russian": "болезненный"
+        },
+        {
+            "italian": "preoccupato",
+            "russian": "взволнованный"
+        },
+        {
+            "italian": "malato",
+            "russian": "больной"
+        },
+        {
+            "italian": "bene",
+            "russian": "хороший"
+        },
+        {
+            "italian": "sollevato",
+            "russian": "раскрепощенный"
+        },
+        {
+            "italian": "male",
+            "russian": "вредный"
+        },
+        {
+            "italian": "solitario",
+            "russian": "одинокий"
+        },
+        {
+            "italian": "innamorato",
+            "russian": "любящий"
+        },
+        {
+            "italian": "triste",
+            "russian": "печальный"
+        },
+        {
+            "italian": "nostalgico",
+            "russian": "тоскующий по дому"
+        },
+        {
+            "italian": "orgoglioso",
+            "russian": "гордый"
+        },
+        {
+            "italian": "emozionato",
+            "russian": "взволнованный"
+        },
+        {
+            "italian": "impaurito",
+            "russian": "испуганный"
+        },
+        {
+            "italian": "imbarazzato",
+            "russian": "смущенный"
+        },
+        {
+            "italian": "annoiato",
+            "russian": "скучающий"
+        },
+        {
+            "italian": "confuso",
+            "russian": "запутанный"
+        },
+        {
+            "italian": "frustrato",
+            "russian": "разбитый"
+        },
+        {
+            "italian": "arrabbiato",
+            "russian": "сердитый"
+        },
+        {
+            "italian": "sconvolto",
+            "russian": "расстроенный"
+        },
+        {
+            "italian": "sorpreso",
+            "russian": "удивленный"
+        },
+        {
+            "italian": "felice",
+            "russian": "счастливый"
+        },
+        {
+            "italian": "stanco",
+            "russian": "усталый"
+        }
+    ],
+    "Части тела": [
+        {
+            "italian": "parti del corpo",
+            "russian": "части тела"
+        },
+        {
+            "italian": "il piede",
+            "russian": "нога"
+        },
+        {
+            "italian": "la gamba",
+            "russian": "голень"
+        },
+        {
+            "italian": "l'anca",
+            "russian": "бедро"
+        },
+        {
+            "italian": "la vita",
+            "russian": "талия"
+        },
+        {
+            "italian": "l'addome",
+            "russian": "живот"
+        },
+        {
+            "italian": "il collo",
+            "russian": "шея"
+        },
+        {
+            "italian": "la testa",
+            "russian": "голова"
+        },
+        {
+            "italian": "la mano",
+            "russian": "кисть"
+        },
+        {
+            "italian": "il braccio/le braccia",
+            "russian": "рука"
+        },
+        {
+            "italian": "la spalla",
+            "russian": "плечо"
+        },
+        {
+            "italian": "la schiena",
+            "russian": "спина"
+        },
+        {
+            "italian": "le natiche",
+            "russian": "ягодицы"
+        },
+        {
+            "italian": "il petto",
+            "russian": "грудная клетка"
+        },
+        {
+            "italian": "il seno",
+            "russian": "грудь"
+        },
+        {
+            "italian": "il gomito",
+            "russian": "локоть"
+        },
+        {
+            "italian": "la coscia",
+            "russian": "бедро"
+        },
+        {
+            "italian": "i ginocchi/le ginocchia",
+            "russian": "колено"
+        },
+        {
+            "italian": "il polpaccio",
+            "russian": "икра"
+        },
+        {
+            "italian": "i capelli",
+            "russian": "волосы"
+        },
+        {
+            "italian": "la fronte",
+            "russian": "лоб"
+        },
+        {
+            "italian": "il naso",
+            "russian": "нос"
+        },
+        {
+            "italian": "la bocca",
+            "russian": "рот"
+        },
+        {
+            "italian": "la mandibola",
+            "russian": "челюсть"
+        },
+        {
+            "italian": "le gengive",
+            "russian": "десна"
+        },
+        {
+            "italian": "i denti",
+            "russian": "зубы"
+        },
+        {
+            "italian": "la lingua",
+            "russian": "язык"
+        },
+        {
+            "italian": "gli occhi",
+            "russian": "глаза"
+        },
+        {
+            "italian": "gli orecchi/le orecchie",
+            "russian": "уши"
+        },
+        {
+            "italian": "la guancia",
+            "russian": "щека"
+        },
+        {
+            "italian": "il labbro",
+            "russian": "губа"
+        },
+        {
+            "italian": "il mento",
+            "russian": "подбородок"
+        },
+        {
+            "italian": "il sopracciglio",
+            "russian": "бровь"
+        },
+        {
+            "italian": "la palpebra",
+            "russian": "веко"
+        },
+        {
+            "italian": "le ciglia",
+            "russian": "ресницы"
+        }
+    ],
+    "Еда": [
+        {
+            "italian": "Il cibo",
+            "russian": "еда"
+        },
+        {
+            "italian": "i prodotti in scatola/i cibi in scatola",
+            "russian": "консервы"
+        },
+        {
+            "italian": "i prodotti da forno",
+            "russian": "выпечные изделия"
+        },
+        {
+            "italian": "la zuppa",
+            "russian": "суп"
+        },
+        {
+            "italian": "il tonno",
+            "russian": "тунец"
+        },
+        {
+            "italian": "i fagioli",
+            "russian": "бобы"
+        },
+        {
+            "italian": "gli spaghetti",
+            "russian": "спагетти"
+        },
+        {
+            "italian": "il riso",
+            "russian": "рис"
+        },
+        {
+            "italian": "il pane",
+            "russian": "хлеб"
+        },
+        {
+            "italian": "i biscotti",
+            "russian": "печенье"
+        },
+        {
+            "italian": "la torta",
+            "russian": "пирог"
+        },
+        {
+            "italian": "lo yogurt",
+            "russian": "йогурт"
+        },
+        {
+            "italian": "le uova",
+            "russian": "яйца"
+        },
+        {
+            "italian": "il latte",
+            "russian": "молоко"
+        },
+        {
+            "italian": "il burro",
+            "russian": "масло"
+        },
+        {
+            "italian": "la panna acida",
+            "russian": "сметана"
+        },
+        {
+            "italian": "il formaggio",
+            "russian": "сыр"
+        },
+        {
+            "italian": "la margarina",
+            "russian": "маргарин"
+        },
+        {
+            "italian": "il registratore di cassa",
+            "russian": "кассовый аппарат"
+        },
+        {
+            "italian": "gli snack",
+            "russian": "закуски"
+        },
+        {
+            "italian": "l’olio",
+            "russian": "масло"
+        },
+        {
+            "italian": "lo zucchero",
+            "russian": "сахар"
+        },
+        {
+            "italian": "il succo",
+            "russian": "сок"
+        },
+        {
+            "italian": "la soda",
+            "russian": "сода"
+        },
+        {
+            "italian": "l’acqua in bottiglia",
+            "russian": "вода в бутылках"
+        },
+        {
+            "italian": "l’involucro di plastica",
+            "russian": "пластмассовая обертка"
+        },
+        {
+            "italian": "il foglio di alluminio",
+            "russian": "алюминиевая фольга"
+        },
+        {
+            "italian": "le spezie",
+            "russian": "специи"
+        },
+        {
+            "italian": "la torta mix",
+            "russian": "полуфабрикат"
+        },
+        {
+            "italian": "il gelato",
+            "russian": "мороженое"
+        }
+    ],
+    "Мясо, птица, морепродукты": [
+        {
+            "italian": "la carne",
+            "russian": "мясо"
+        },
+        {
+            "italian": "l'arrosto di manzo",
+            "russian": "ростбиф"
+        },
+        {
+            "italian": "la bistecca",
+            "russian": "стейк"
+        },
+        {
+            "italian": "il terreno manzo",
+            "russian": "говяжий фарш"
+        },
+        {
+            "italian": "il maiale",
+            "russian": "свинина"
+        },
+        {
+            "italian": "il fegato",
+            "russian": "печень"
+        },
+        {
+            "italian": "le braciole di maiale",
+            "russian": "свиные отбивные"
+        },
+        {
+            "italian": "la pancetta",
+            "russian": "бэкон"
+        },
+        {
+            "italian": "la salsiccia",
+            "russian": "колбаса"
+        },
+        {
+            "italian": "l'agnello",
+            "russian": "ягненок"
+        },
+        {
+            "italian": "il pollo",
+            "russian": "курица"
+        },
+        {
+            "italian": "il tacchino",
+            "russian": "индейка"
+        },
+        {
+            "italian": "l'anatra",
+            "russian": "утка"
+        },
+        {
+            "italian": "i seni",
+            "russian": "грудь"
+        },
+        {
+            "italian": "le ali",
+            "russian": "крылья"
+        },
+        {
+            "italian": "le cosce",
+            "russian": "бедра"
+        },
+        {
+            "italian": "le bacchette",
+            "russian": "барабанные палочки"
+        },
+        {
+            "italian": "i ventrigli",
+            "russian": "желудочки"
+        },
+        {
+            "italian": "la trota",
+            "russian": "форель"
+        },
+        {
+            "italian": "i frutti di mare",
+            "russian": "морепродукты"
+        },
+        {
+            "italian": "il salmone",
+            "russian": "лосось"
+        },
+        {
+            "italian": "l'halibut",
+            "russian": "палтус"
+        },
+        {
+            "italian": "il granchio",
+            "russian": "краб"
+        },
+        {
+            "italian": "l'aragosta",
+            "russian": "омар"
+        },
+        {
+            "italian": "il gambero",
+            "russian": "креветки"
+        },
+        {
+            "italian": "le capesante",
+            "russian": "гребешки"
+        },
+        {
+            "italian": "le cozze",
+            "russian": "мидии"
+        },
+        {
+            "italian": "le ostriche",
+            "russian": "устрицы"
+        },
+        {
+            "italian": "le vongole",
+            "russian": "моллюски"
+        }
+    ],
+    "Приготовление еды": [
+        {
+            "italian": "cucinare",
+            "russian": "приготовление еды"
+        },
+        {
+            "italian": "rompere",
+            "russian": "сломать"
+        },
+        {
+            "italian": "battere",
+            "russian": "бить"
+        },
+        {
+            "italian": "ingrassare",
+            "russian": "смазать"
+        },
+        {
+            "italian": "versare",
+            "russian": "налить"
+        },
+        {
+            "italian": "mescolare",
+            "russian": "шевелиться"
+        },
+        {
+            "italian": "cucinare",
+            "russian": "готовить"
+        },
+        {
+            "italian": "tagliare",
+            "russian": "резать"
+        },
+        {
+            "italian": "sbucciare",
+            "russian": "лупить"
+        },
+        {
+            "italian": "affettare",
+            "russian": "нарезать"
+        },
+        {
+            "italian": "tritare",
+            "russian": "фаршировать"
+        },
+        {
+            "italian": "bollire",
+            "russian": "до кипения"
+        },
+        {
+            "italian": "aggiungere",
+            "russian": "добавить"
+        },
+        {
+            "italian": "cuocere a fuoco lento",
+            "russian": "кипеть"
+        },
+        {
+            "italian": "friggere",
+            "russian": "жарить"
+        },
+        {
+            "italian": "arrostire",
+            "russian": "жариться"
+        },
+        {
+            "italian": "cuocere",
+            "russian": "для жарки"
+        },
+        {
+            "italian": "saltare in padella",
+            "russian": "в жаркое"
+        },
+        {
+            "italian": "cuocere alla griglia",
+            "russian": "для гриля"
+        },
+        {
+            "italian": "tagliare",
+            "russian": "рубить"
+        },
+        {
+            "italian": "vaporizzare",
+            "russian": "париться"
+        },
+        {
+            "italian": "alla griglia",
+            "russian": "натереть"
+        },
+        {
+            "italian": "mescolare",
+            "russian": "смешивать"
+        },
+        {
+            "italian": "infornare/cuocere al forno",
+            "russian": "испечь"
+        }
+    ],
+    "Посуда и кухонные принадлежности": [
+        {
+            "italian": "l’apriscatole",
+            "russian": "консервный нож"
+        },
+        {
+            "italian": "la grattugia",
+            "russian": "терка"
+        },
+        {
+            "italian": "il piroscafo",
+            "russian": "скороварка"
+        },
+        {
+            "italian": "la padella",
+            "russian": "сковорода"
+        },
+        {
+            "italian": "il piatto",
+            "russian": "горшок"
+        },
+        {
+            "italian": "il mestolo",
+            "russian": "ковш"
+        },
+        {
+            "italian": "la doppia caldaia",
+            "russian": "пароварка"
+        },
+        {
+            "italian": "l'aglio stampa",
+            "russian": "чеснокодавилка"
+        },
+        {
+            "italian": "la casseruola",
+            "russian": "кастрюля"
+        },
+        {
+            "italian": "il coltello",
+            "russian": "разделочный нож"
+        },
+        {
+            "italian": "la teglia",
+            "russian": "жаровня"
+        },
+        {
+            "italian": "il rack torrefazione",
+            "russian": "жарящаяся стойка"
+        },
+        {
+            "italian": "il pelaverdure",
+            "russian": "овощной нож"
+        },
+        {
+            "italian": "il coltello accoppiamento",
+            "russian": "соединяющийся нож"
+        },
+        {
+            "italian": "il colino",
+            "russian": "дуршлаг"
+        },
+        {
+            "italian": "la cucina timer",
+            "russian": "кухонный таймер"
+        },
+        {
+            "italian": "la spatola",
+            "russian": "лопаточка"
+        },
+        {
+            "italian": "il eggbeater",
+            "russian": "взбивалка"
+        },
+        {
+            "italian": "la frusta",
+            "russian": "метелка"
+        },
+        {
+            "italian": "il filtro",
+            "russian": "сито"
+        },
+        {
+            "italian": "le molle",
+            "russian": "щипцы"
+        },
+        {
+            "italian": "il coperchio",
+            "russian": "крышка"
+        },
+        {
+            "italian": "la casseruola",
+            "russian": "кастрюля"
+        },
+        {
+            "italian": "la torta di pan",
+            "russian": "форма для кекса"
+        },
+        {
+            "italian": "il cookie foglio",
+            "russian": "противень для выпечки"
+        },
+        {
+            "italian": "la torta di pan",
+            "russian": "форма для выпечки"
+        },
+        {
+            "italian": "il piatto titolari",
+            "russian": "прихватка"
+        },
+        {
+            "italian": "il mattarello",
+            "russian": "скалка"
+        },
+        {
+            "italian": "la ciotola di miscelazione",
+            "russian": "миска"
+        }
+    ],
+    "Фрукты": [
+        {
+            "italian": "il frutto",
+            "russian": "фрукты"
+        },
+        {
+            "italian": "l'uva",
+            "russian": "виноград"
+        },
+        {
+            "italian": "gli ananas",
+            "russian": "ананасы"
+        },
+        {
+            "italian": "le banane",
+            "russian": "бананы"
+        },
+        {
+            "italian": "le mele",
+            "russian": "яблоки"
+        },
+        {
+            "italian": "le pesche",
+            "russian": "персики"
+        },
+        {
+            "italian": "le pere",
+            "russian": "груши"
+        },
+        {
+            "italian": "le albicocche",
+            "russian": "абрикосы"
+        },
+        {
+            "italian": "le prugne",
+            "russian": "сливы"
+        },
+        {
+            "italian": "i pompelmi",
+            "russian": "грейпфруты"
+        },
+        {
+            "italian": "le arance",
+            "russian": "апельсины"
+        },
+        {
+            "italian": "i limoni",
+            "russian": "лимоны"
+        },
+        {
+            "italian": "il limes",
+            "russian": "лаймы"
+        },
+        {
+            "italian": "i mandarini",
+            "russian": "мандарины"
+        },
+        {
+            "italian": "l'avocado",
+            "russian": "авокадо"
+        },
+        {
+            "italian": "i meloni",
+            "russian": "мускусные дыни"
+        },
+        {
+            "italian": "le ciliegie",
+            "russian": "вишни"
+        },
+        {
+            "italian": "le fragole",
+            "russian": "земляника"
+        },
+        {
+            "italian": "i lamponi",
+            "russian": "малина"
+        },
+        {
+            "italian": "i mirtilli",
+            "russian": "черника"
+        },
+        {
+            "italian": "la papaia",
+            "russian": "папайи"
+        },
+        {
+            "italian": "il mango",
+            "russian": "манго"
+        },
+        {
+            "italian": "le noci di cocco",
+            "russian": "кокосовые орехи"
+        },
+        {
+            "italian": "i dadi",
+            "russian": "орехи"
+        },
+        {
+            "italian": "le angurie",
+            "russian": "арбузы"
+        },
+        {
+            "italian": "le date",
+            "russian": "даты"
+        },
+        {
+            "italian": "le prugne",
+            "russian": "чернослив"
+        },
+        {
+            "italian": "l'uvetta",
+            "russian": "изюм"
+        },
+        {
+            "italian": "maturo",
+            "russian": "готовый"
+        },
+        {
+            "italian": "marcio",
+            "russian": "гнилой"
+        }
+    ],
+    "Овощи": [
+        {
+            "italian": "le verdure",
+            "russian": "овощи"
+        },
+        {
+            "italian": "la lattuga",
+            "russian": "салат"
+        },
+        {
+            "italian": "il cavolo",
+            "russian": "капуста"
+        },
+        {
+            "italian": "le carote",
+            "russian": "морковь"
+        },
+        {
+            "italian": "le zucchine",
+            "russian": "цукини"
+        },
+        {
+            "italian": "i ravanelli",
+            "russian": "редька"
+        },
+        {
+            "italian": "le barbabietole",
+            "russian": "свекла"
+        },
+        {
+            "italian": "i peperoni",
+            "russian": "перцы сладкие"
+        },
+        {
+            "italian": "il sedano",
+            "russian": "сельдерей"
+        },
+        {
+            "italian": "il prezzemolo",
+            "russian": "петрушка"
+        },
+        {
+            "italian": "gli spinaci",
+            "russian": "шпинат"
+        },
+        {
+            "italian": "i cetrioli",
+            "russian": "огурцы"
+        },
+        {
+            "italian": "la zucca",
+            "russian": "сквош"
+        },
+        {
+            "italian": "le rape",
+            "russian": "репа"
+        },
+        {
+            "italian": "i broccoli",
+            "russian": "брокколи"
+        },
+        {
+            "italian": "il cavolfiore",
+            "russian": "цветная капуста"
+        },
+        {
+            "italian": "gli scalogni",
+            "russian": "зеленый лук"
+        },
+        {
+            "italian": "le melanzane",
+            "russian": "баклажаны"
+        },
+        {
+            "italian": "i piselli",
+            "russian": "горох"
+        },
+        {
+            "italian": "i carciofi",
+            "russian": "артишоки"
+        },
+        {
+            "italian": "le patate",
+            "russian": "картофель"
+        },
+        {
+            "italian": "le patate",
+            "russian": "сладкий картофель"
+        },
+        {
+            "italian": "i pomodori",
+            "russian": "помидоры"
+        },
+        {
+            "italian": "gli asparagi",
+            "russian": "спаржа"
+        },
+        {
+            "italian": "i fagiolini",
+            "russian": "стручковая фасоль"
+        },
+        {
+            "italian": "i funghi",
+            "russian": "грибы"
+        },
+        {
+            "italian": "il grano",
+            "russian": "зерно"
+        },
+        {
+            "italian": "le cipolle",
+            "russian": "лук"
+        },
+        {
+            "italian": "l'aglio",
+            "russian": "чеснок"
+        }
+    ],
+    "В ресторане": [
+        {
+            "italian": "la forcella",
+            "russian": "вилка"
+        },
+        {
+            "italian": "il cucchiaio",
+            "russian": "столовая ложка"
+        },
+        {
+            "italian": "il coltello",
+            "russian": "нож"
+        },
+        {
+            "italian": "il cucchiaino",
+            "russian": "чайная ложка"
+        },
+        {
+            "italian": "il vino di vetro",
+            "russian": "бокал"
+        },
+        {
+            "italian": "il tovagliolo",
+            "russian": "салфетка"
+        },
+        {
+            "italian": "il piattino",
+            "russian": "блюдце"
+        },
+        {
+            "italian": "la zuppa di coppa",
+            "russian": "суповая тарелка"
+        },
+        {
+            "italian": "l'insalata piatto",
+            "russian": "салат"
+        },
+        {
+            "italian": "la cena piastra",
+            "russian": "мелкая тарелка"
+        },
+        {
+            "italian": "il luogo impostazione",
+            "russian": "установка места"
+        },
+        {
+            "italian": "la lavastoviglie",
+            "russian": "посудомоечная машина"
+        },
+        {
+            "italian": "lo chef",
+            "russian": "повар"
+        },
+        {
+            "italian": "la cucina",
+            "russian": "кухня"
+        },
+        {
+            "italian": "il busperson",
+            "russian": "помощник официанта"
+        },
+        {
+            "italian": "il pane cestino",
+            "russian": "корзина для хлеба"
+        },
+        {
+            "italian": "il dolce vassoio",
+            "russian": "десертный поднос"
+        },
+        {
+            "italian": "la punta",
+            "russian": "наконечник"
+        },
+        {
+            "italian": "pagare",
+            "russian": "заплатить"
+        },
+        {
+            "italian": "il vassoio",
+            "russian": "поднос"
+        },
+        {
+            "italian": "cancellare la tabella",
+            "russian": "очистить стол"
+        },
+        {
+            "italian": "su ordinazione",
+            "russian": "заказать"
+        },
+        {
+            "italian": "servire",
+            "russian": "обслужить"
+        },
+        {
+            "italian": "versare",
+            "russian": "вылить"
+        },
+        {
+            "italian": "apparecchiare la tavola",
+            "russian": "накрывать на стол"
+        },
+        {
+            "italian": "il patrono",
+            "russian": "гость"
+        },
+        {
+            "italian": "il cameriere",
+            "russian": "официант"
+        },
+        {
+            "italian": "il menu",
+            "russian": "меню"
+        },
+        {
+            "italian": "la sala da pranzo",
+            "russian": "столовая"
+        },
+        {
+            "italian": "la padrona di casa",
+            "russian": "хозяйка"
+        }
+    ],
+    "Город": [
+        {
+            "italian": "il parcheggio",
+            "russian": "место для стоянки"
+        },
+        {
+            "italian": "il semaforo",
+            "russian": "светофор"
+        },
+        {
+            "italian": "il pedone",
+            "russian": "пешеход"
+        },
+        {
+            "italian": "il passaggio pedonale/le striscie",
+            "russian": "переход"
+        },
+        {
+            "italian": "la strada",
+            "russian": "улица"
+        },
+        {
+            "italian": "il cordone del marciapiede",
+            "russian": "ограничение"
+        },
+        {
+            "italian": "l'edicola",
+            "russian": "газетный киоск"
+        },
+        {
+            "italian": "la cassetta della posta",
+            "russian": "почтовый ящик"
+        },
+        {
+            "italian": "l'autobus/il pulman",
+            "russian": "автобус"
+        },
+        {
+            "italian": "la fermata del bus",
+            "russian": "автобусная остановка"
+        },
+        {
+            "italian": "l'angolo",
+            "russian": "угол"
+        },
+        {
+            "italian": "il parchimetro",
+            "russian": "парковочные часы"
+        },
+        {
+            "italian": "la motocicletta/la moto",
+            "russian": "мотоцикл"
+        },
+        {
+            "italian": "il lampione",
+            "russian": "уличный фонарь"
+        },
+        {
+            "italian": "il marciapiede",
+            "russian": "тротуар"
+        },
+        {
+            "italian": "il cartello stradale",
+            "russian": "знак"
+        },
+        {
+            "italian": "l'idrante",
+            "russian": "пожарный насос"
+        }
+    ],
+    "Спальная комната": [
+        {
+            "italian": "la camera da letto",
+            "russian": "спальня"
+        },
+        {
+            "italian": "lo specchio",
+            "russian": "зеркало"
+        },
+        {
+            "italian": "il cassettone",
+            "russian": "комод"
+        },
+        {
+            "italian": "il cassetto",
+            "russian": "ящик"
+        },
+        {
+            "italian": "l'armadio",
+            "russian": "туалет"
+        },
+        {
+            "italian": "le tende",
+            "russian": "занавески"
+        },
+        {
+            "italian": "la finestra ombra",
+            "russian": "занавеска"
+        },
+        {
+            "italian": "la fotografia",
+            "russian": "фотография"
+        },
+        {
+            "italian": "il letto",
+            "russian": "кровать"
+        },
+        {
+            "italian": "il cuscino",
+            "russian": "подушка"
+        },
+        {
+            "italian": "la federa",
+            "russian": "наволочка"
+        },
+        {
+            "italian": "il copriletto",
+            "russian": "покрывало"
+        },
+        {
+            "italian": "la coperta",
+            "russian": "одеяло"
+        },
+        {
+            "italian": "la lamiera piana",
+            "russian": "простынь"
+        },
+        {
+            "italian": "il lenzuolo con angoli",
+            "russian": "матрас"
+        },
+        {
+            "italian": "la testata",
+            "russian": "спинка кровати"
+        },
+        {
+            "italian": "l'orologio radio",
+            "russian": "радиоприемник с таймером"
+        },
+        {
+            "italian": "la lampada",
+            "russian": "лампа"
+        },
+        {
+            "italian": "il paralume",
+            "russian": "абажур"
+        },
+        {
+            "italian": "l'interruttore della luce",
+            "russian": "выключатель света"
+        },
+        {
+            "italian": "la presa scatola",
+            "russian": "выход"
+        },
+        {
+            "italian": "il comodino",
+            "russian": "ночной столик"
+        },
+        {
+            "italian": "la polvere volant",
+            "russian": "слой пыли"
+        },
+        {
+            "italian": "il tappeto",
+            "russian": "коврик"
+        },
+        {
+            "italian": "il pavimento",
+            "russian": "пол"
+        },
+        {
+            "italian": "il materasso",
+            "russian": "матрац"
+        },
+        {
+            "italian": "la casella di primavera",
+            "russian": "матрасная пружина"
+        },
+        {
+            "italian": "telaio del letto",
+            "russian": "каркас кровати"
+        }
+    ],
+    "Столовая комната": [
+        {
+            "italian": "la sala da pranzo",
+            "russian": "столовая"
+        },
+        {
+            "italian": "l'armadio",
+            "russian": "кабинет"
+        },
+        {
+            "italian": "i piatti",
+            "russian": "блюда"
+        },
+        {
+            "italian": "il piatto",
+            "russian": "плоское блюдо"
+        },
+        {
+            "italian": "la candela",
+            "russian": "свеча"
+        },
+        {
+            "italian": "il vaso",
+            "russian": "ваза"
+        },
+        {
+            "italian": "il vassoio",
+            "russian": "поднос"
+        },
+        {
+            "italian": "la teiera",
+            "russian": "заварной чайник"
+        },
+        {
+            "italian": "la zuccheriera",
+            "russian": "сахарница"
+        },
+        {
+            "italian": "il bricchetto",
+            "russian": "кувшин для молока"
+        },
+        {
+            "italian": "la saliera",
+            "russian": "солонка"
+        },
+        {
+            "italian": "il pepe shaker",
+            "russian": "перечница"
+        },
+        {
+            "italian": "la tovaglia",
+            "russian": "скатерть"
+        },
+        {
+            "italian": "il tovagliolo",
+            "russian": "салфетка"
+        },
+        {
+            "italian": "la tovaglietta",
+            "russian": "подставка для столовых приборов"
+        },
+        {
+            "italian": "la forcella",
+            "russian": "вилка"
+        },
+        {
+            "italian": "il coltello",
+            "russian": "нож"
+        },
+        {
+            "italian": "il cucchiaio",
+            "russian": "ложка"
+        },
+        {
+            "italian": "la piastra",
+            "russian": "тарелка"
+        },
+        {
+            "italian": "la ciotola",
+            "russian": "чашка"
+        },
+        {
+            "italian": "il vetro",
+            "russian": "стакан"
+        },
+        {
+            "italian": "la tazza di caffè",
+            "russian": "кофейная чашка"
+        },
+        {
+            "italian": "la tazza",
+            "russian": "кружка"
+        },
+        {
+            "italian": "gli utensili",
+            "russian": "посуда"
+        }
+    ],
+    "Кухня": [
+        {
+            "italian": "la cucina",
+            "russian": "кухня"
+        },
+        {
+            "italian": "il robot da cucina",
+            "russian": "кухонный комбайн"
+        },
+        {
+            "italian": "il mixer elettrico",
+            "russian": "электрический миксер"
+        },
+        {
+            "italian": "la padella",
+            "russian": "кастрюля / сковорода"
+        },
+        {
+            "italian": "il cassetto",
+            "russian": "ящик"
+        },
+        {
+            "italian": "il forno",
+            "russian": "духовка"
+        },
+        {
+            "italian": "la stufa",
+            "russian": "печь"
+        },
+        {
+            "italian": "il bollitore",
+            "russian": "заварной чайник"
+        },
+        {
+            "italian": "il piatto",
+            "russian": "горшок"
+        },
+        {
+            "italian": "l'apriscatole",
+            "russian": "консервный нож"
+        },
+        {
+            "italian": "il forno a microonde",
+            "russian": "микроволновая печь"
+        },
+        {
+            "italian": "il frullatore",
+            "russian": "блендер"
+        },
+        {
+            "italian": "il congelatore",
+            "russian": "морозильник"
+        },
+        {
+            "italian": "il frigorifero",
+            "russian": "холодильник"
+        },
+        {
+            "italian": "lo scaffale",
+            "russian": "полка"
+        },
+        {
+            "italian": "il tostapane",
+            "russian": "тостер"
+        },
+        {
+            "italian": "il lavello",
+            "russian": "раковина"
+        },
+        {
+            "italian": "scivolo della spazzatura",
+            "russian": "мусоропровод"
+        },
+        {
+            "italian": "la lavastoviglie",
+            "russian": "посудомоечная машина"
+        },
+        {
+            "italian": "il scolapiatti",
+            "russian": "сушилка для посуды"
+        },
+        {
+            "italian": "la carta asciugamani",
+            "russian": "бумажные полотенца"
+        },
+        {
+            "italian": "il tagliere",
+            "russian": "разделочная доска"
+        }
+    ],
+    "Ванная комната": [
+        {
+            "italian": "la vasca da bagno",
+            "russian": "ванна"
+        },
+        {
+            "italian": "il bagno",
+            "russian": "ванная комната"
+        },
+        {
+            "italian": "lo scarico",
+            "russian": "утечка"
+        },
+        {
+            "italian": "l'acqua calda",
+            "russian": "горячая вода"
+        },
+        {
+            "italian": "l'acqua fredda",
+            "russian": "холодная вода"
+        },
+        {
+            "italian": "il rubinetto",
+            "russian": "кран"
+        },
+        {
+            "italian": "la spugna",
+            "russian": "полотенце"
+        },
+        {
+            "italian": "il portasciugamani",
+            "russian": "стойка полотенца"
+        },
+        {
+            "italian": "la doccia",
+            "russian": "насадка для душа"
+        },
+        {
+            "italian": "la salvietta",
+            "russian": "тряпка для мытья посуды"
+        },
+        {
+            "italian": "la carta igienica",
+            "russian": "туалетная бумага"
+        },
+        {
+            "italian": "il scopino",
+            "russian": "туалетная щетка"
+        },
+        {
+            "italian": "la toilette",
+            "russian": "туалет"
+        },
+        {
+            "italian": "lo specchio",
+            "russian": "зеркало"
+        },
+        {
+            "italian": "lo spazzolino da denti",
+            "russian": "зубная щетка"
+        },
+        {
+            "italian": "il lavello",
+            "russian": "слив"
+        },
+        {
+            "italian": "il sapone",
+            "russian": "мыло"
+        },
+        {
+            "italian": "il cestino",
+            "russian": "корзина для бумаг"
+        },
+        {
+            "italian": "la scala",
+            "russian": "накипь"
+        },
+        {
+            "italian": "il tappetino in gomma",
+            "russian": "резиновый коврик"
+        }
+    ]
+}
