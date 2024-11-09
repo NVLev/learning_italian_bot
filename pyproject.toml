@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "learning-italian-bot"
+version = "0.1.0"
+description = ""
+authors = ["natalia_levant <an_smir@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiofiles = "^24.1.0"
+aiogram = "^3.13.1"
+aiohttp = "^3.10.10"
+aiosignal = "^1.3.1"
+asyncio = "^3.4.3"
+beautifulsoup4 = "^4.12.3"
+bs4 = "^0.0.2"
+logging = "^0.4.9.6"
+python-dotenv = "^1.0.1"
+sqlalchemy = {extras = ["all"], version = "^2.0.36"}
+alembic = "^1.13.3"
+asyncpg = "^0.30.0"
+charset-normalizer = "^3.4.0"
+pydantic-settings = "^2.6.1"
+black = "^24.10.0"
+matplotlib = "^3.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

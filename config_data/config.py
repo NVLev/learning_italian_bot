@@ -1,7 +1,8 @@
 import os
 
 import logging
-
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker
 
 from dotenv import load_dotenv, find_dotenv
 
@@ -16,16 +17,15 @@ else:
     load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-DB_PATH = 'chat_database.db'
-
-
-DEFAULT_COMMANDS = (
-    ("start", "🚀 Запуск бота"),
-    ("help", "\U0001F4A1 Обзор команд"),
-    ("", ""),
-    ('', ''),
-    ('', ''),
-    ('', '')
-    # из состояний - кастомные команды
+DB_PATH = ''
+DATABASE_URL = os.getenv("CONFIG__DB__URL")
+engine = create_async_engine(
+                DATABASE_URL,
+                echo=True,
 )
+async_session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+
+
+
+
 API_BASE_URL = ""

@@ -63,7 +63,7 @@ async def main():
                 vocabulary_data[list(theme_urls.keys())[i]] = result
 
     # Write to JSON file
-    with open("vocabulary.json", "w", encoding="utf-8") as f:
+    with open("../database/vocabulary.json", "w", encoding="utf-8") as f:
         json.dump(vocabulary_data, f, ensure_ascii=False, indent=4)
 
     print("Vocabulary data written to vocabulary.json")
