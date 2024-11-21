@@ -14,15 +14,12 @@ from utils.set_commands import set_commands
 
 
 async def main():
-    # dp.message.middleware(DatabaseMiddleware())
-    # logger.info('middleware passed')
     # подключает к диспетчеру все обработчики, которые используют router
     dp.include_router(start_router)
     dp.include_router(router)
     dp.include_router(quiz_router)
     logger.info('included routers')
     await set_commands(bot)
-    # dp.message.register(help_command, Command(commands='help'))
     # удаляет все обновления, которые произошли после последнего завершения работы бота
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
