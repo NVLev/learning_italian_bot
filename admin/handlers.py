@@ -27,7 +27,6 @@ async def demonstrating_word_by_theme(
 ):
     logger.info('started with word list')
     await state.clear()
-    # async with async_session() as session:
     try:
         words = await get_words_by_theme_id(session, int(callback.data))  # Передаем сессию
 
@@ -42,8 +41,7 @@ async def demonstrating_word_by_theme(
             return
 
         await callback.message.answer("\n".join(formatted_words))
-        # await callback.message.answer(
-        #         "\n".join([f"• {word.italian_word}    ➔    {word.rus_word}" for word in words]))
+
     except Exception as e:
         logger.error(f"Ошибка в demonstrating_word_by_theme: {e}")
         await callback.message.answer("Ошибка")
