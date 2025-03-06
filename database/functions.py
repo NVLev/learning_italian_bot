@@ -6,36 +6,40 @@ from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError, NoResultFound
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from config_data.config import async_session
+
 from config_data.config import logger
 from model.model import Theme, Vocabulary, Idiom
 from schemas.schemas import ThemeRead, VocabularyRead, IdiomRead
 
 
-async def get_words_by_theme_id(theme_id:int) -> list[VocabularyRead] | list[Any]:
+async def get_words_by_theme_id(
+    session: AsyncSession,  # Принимаем сессию извне
+    theme_id: int
+) -> list[VocabularyRead] | list[Any]:
     """
     Функция получает список слов в зависимости от темы
     """
-    async with async_session() as session:
-        try:
-            stmt = select(Vocabulary).join(Theme).filter(Theme.id == theme_id)
-            result = await session.execute(stmt)
-            words = result.scalars().all()
+    try:
+        stmt = select(Vocabulary).join(Theme).filter(Theme.id == theme_id)
+        result = await session.execute(stmt)
+        words = result.scalars().all()
 
-            words_reads = []
-            for word in words:
-                try:
-                    words_read = VocabularyRead(italian_word=word.italian_word, rus_word=word.rus_word)
-                    # logger.info(f"Reading word: {words_read}")
-                    words_reads.append(words_read)
-                except ValidationError as e:
-                    logger.error(f"Pydantic validation error for word: {word}, Error: {e}")
+        words_reads = []
+        for word in words:
+            try:
+                words_read = VocabularyRead(italian_word=word.italian_word, rus_word=word.rus_word)
+                logger.info(f"Reading word: {words_read}")
+                words_reads.append(words_read)
+            except ValidationError as e:
+                logger.error(f"Pydantic validation error for word: {word}, Error: {e}")
 
-            return words_reads
-        except NoResultFound:
-            logger.warning(f"No words found for theme: {theme_id}")
-            return []
-
+        return words_reads
+    except NoResultFound:
+        logger.warning(f"No words found for theme: {theme_id}")
+        return []
+    except Exception as e:
+        logger.error(f"Unexpected error in get_words_by_theme_id: {e}")
+        return []
 
 async def get_all_themes(session: AsyncSession) -> list[ThemeRead] | list[Any]:
     """
@@ -86,9 +90,8 @@ async def get_all_idioms(session: AsyncSession) -> list[IdiomRead] | list[Any]:
                 })
                 logger.info(f'Reading idiom is {idiom.rus_idiom}, {idiom.italian_idiom}')
                 idiom_reads.append(idiom_read)
-
             except ValidationError as e:
-                logger.error(f"Pydantic validation error for theme {idiom.name}: {e}")
+                logger.error(f"Pydantic error for idiom ID {idiom.id}: {e}")
                 continue
         # logger.info(idiom_reads)
         return idiom_reads
@@ -100,12 +103,8 @@ async def get_all_idioms(session: AsyncSession) -> list[IdiomRead] | list[Any]:
         logger.exception(f"An unexpected error occurred in get_all_themes: {e}")
         return []
 
-
-
 async def get_theme_name_by_id(session: AsyncSession, id: int):
     pass
-
-
 
 async def insert_data_from_json(session: AsyncSession, json_file_path: str):
     """
@@ -115,8 +114,6 @@ async def insert_data_from_json(session: AsyncSession, json_file_path: str):
 
         with open(json_file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
-
-
         for theme_name, words in data.items():
 
             theme = Theme(name=theme_name)
@@ -141,7 +138,7 @@ async def insert_data_from_json(session: AsyncSession, json_file_path: str):
                 session.add(vocabulary)
 
 
-            await session.commit()
+        await session.commit()
 
         return {"message": "Data inserted successfully"}
 
@@ -202,10 +199,9 @@ async def insert_idioms_from_json(session: AsyncSession, json_file_path: str):
 #     async with async_session() as session:
 #         result = await insert_idioms_from_json(session, "italian_idioms.json")
 #         print(result)
-async def main():
-    async with async_session() as session:
-        result = await get_all_idioms(session)
-        print(result)
+async def main(session: AsyncSession):
+    result = await get_all_idioms(session)
+    print(result)
 
 
 # import asyncio

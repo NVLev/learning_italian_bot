@@ -5,6 +5,7 @@ from aiogram.fsm.context import FSMContext
 from config_data.config import logger
 from loader import bot
 from reply_keyboard.rep_kb import main_kb
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 
@@ -17,6 +18,9 @@ start_router = Router()
 async def cmd_start(message: Message):
     await message.answer('Benvenuto! Я помогу тебе изучать итальянский',
                          reply_markup=main_kb())
+    logger.info(f"User {message.from_user.id} started the bot")
+
+
 
 @start_router.message(Command('help'))
 async def cmd_help(message: Message):
@@ -27,13 +31,3 @@ async def cmd_help(message: Message):
                          reply_markup=main_kb())
 
 
-# @start_router.message()
-# async def echo_message(msg: Message):
-#     logger.info('echo started')
-#     await bot.send_message(msg.from_user.id, msg.text)
-
-
-
-# @start_router.message()
-# async def echo_message(msg: Message):
-#     await msg.answer(f"Твой ID: {msg.from_user.id}")

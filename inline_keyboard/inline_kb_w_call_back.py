@@ -4,16 +4,6 @@ from typing import List
 from aiogram.filters.callback_data import CallbackData
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from config_data.config import logger
-
-from database.functions import get_all_themes
-from config_data.config import async_session
-from schemas.schemas import ThemeRead
-# class ThemeCallback(CallbackData, prefix="theme"):
-#     """Создает Колбэк для KeyboardBuilder, который возвращает список тем"""
-#     action: str
-#     # name: str = None
-#     id: int = None
 
 
 async def theme_keyboard(themes) -> InlineKeyboardMarkup:

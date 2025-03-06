@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -11,31 +11,26 @@ class RunConfig(BaseModel):
 
 
 class DatabaseConfig(BaseModel):
-    url: str
-    echo: bool = True
+    url: PostgresDsn = Field(  # Добавляем валидацию PostgreSQL DSN
+        default="postgresql+asyncpg://user:password@pg:5432/learning_language",
+        examples=["postgresql+asyncpg://user:password@host:port/dbname"]
+    )
+    echo: bool = False
     echo_pool: bool = False
-    pool_size: int = 50
-    max_overflow: int = 10
-    naming_convention: dict[str, str] = {
-        "ix": "ix_%(column_0_label)s",
-        "uq": "uq_%(table_name)s_%(column_0_N_name)s",
-        "ck": "ck_%(table_name)s_%(constraint_name)s",
-        "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-        "pk": "pk_%(table_name)s",
-    }
+    pool_size: int = 10
+    max_overflow: int = 20
 
 
 class Settings(BaseSettings):
-    # model_config = SettingsConfigDict(
-    #     env_file=(".env.template", ".env"),
-    #     case_sensitive=False,
-    #     env_nested_delimiter="__",
-    #     env_prefix="CONFIG__",
-    # )
-    run: RunConfig = RunConfig()
-    db: DatabaseConfig = DatabaseConfig(
-        url="postgresql+asyncpg://user:password@pg:5432/recipes"
+    model_config = SettingsConfigDict(
+        env_prefix="APP_",
+        env_nested_delimiter="__",
+        case_sensitive=False,
+        extra="ignore"
     )
+
+    run: RunConfig = RunConfig()
+    db: DatabaseConfig = DatabaseConfig()
 
 
 settings = Settings()
