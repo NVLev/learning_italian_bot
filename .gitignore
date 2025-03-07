@@ -1,0 +1,6 @@
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo "*.pyo" >> .gitignore
+echo ".env/" >> .gitignore   # Если используете переменные окружения
+echo "venv/" >> .gitignore   # Игнорировать виртуальное окружение
+.env
