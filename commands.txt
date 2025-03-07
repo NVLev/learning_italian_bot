@@ -1,5 +1,7 @@
 docker-compose up -d
 docker-compose logs pg
+docker-compose up --build -d
+docker-compose logs -f bot
 
 [alembic]
 alembic init -t async migration
