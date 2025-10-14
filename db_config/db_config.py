@@ -1,13 +1,17 @@
-from pydantic import BaseModel, Field, PostgresDsn
+import os
+from pydantic import BaseModel, Field, PostgresDsn, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import Annotated
 
+print("DEBUG: Current environment variables:")
+for key, value in os.environ.items():
+    if 'BOT' in key or 'TOKEN' in key:
+        print(f"DEBUG: {key} = {value}")
 
 class RunConfig(BaseModel):
     host: str = "0.0.0.0"
     port: int = 8000
 
-
-# = Field(..., description="Database URL")
 
 
 class DatabaseConfig(BaseModel):
@@ -21,16 +25,31 @@ class DatabaseConfig(BaseModel):
     max_overflow: int = 20
 
 
+class BotConfig(BaseModel):
+    token: str = Field(..., description="Telegram Bot Token")
+    admin_ids: list[int] = Field(default_factory=list, description="Admin user IDs")
+
+    @field_validator('token')
+    @classmethod
+    def validate_token(cls, v: str) -> str:
+        if not v or len(v) < 10:
+            raise ValueError("BOT_TOKEN must be valid")
+        return v
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
         env_prefix="APP_",
         env_nested_delimiter="__",
         case_sensitive=False,
         extra="ignore"
     )
 
-    run: RunConfig = RunConfig()
-    db: DatabaseConfig = DatabaseConfig()
+    run: RunConfig = Field(default_factory=RunConfig)
+    db: DatabaseConfig = Field(default_factory=DatabaseConfig)
+    bot: Annotated[BotConfig, Field()]
 
 
 settings = Settings()
+print(f"✓ Settings loaded: bot_token={settings.bot.token[:10]}...")
