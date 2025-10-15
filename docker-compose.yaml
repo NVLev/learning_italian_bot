@@ -15,9 +15,24 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  alembic:
+    build: .
+    depends_on:
+      - pg
+    networks:
+      - app-network
+    environment:
+      DB__URL: "postgresql+asyncpg://user:password@pg:5432/learning_language"
+    volumes:
+      - ./migration:/app/migration  # Монтируем папку миграций
+      - ./model:/app/model
+      - ./alembic.ini:/app/alembic.ini
+    command: sleep infinity  # Держим контейнер живым
+    profiles:
+      - dev
 
   bot:
     build: .
@@ -27,15 +42,20 @@ services:
     networks:
       - app-network
     environment:
-      DATABASE_URL: "postgresql+asyncpg://user:password@pg:5432/learning_language"
-    restart: unless-stopped
+      BOT__TOKEN: "${BOT__TOKEN}"
+      BOT__ADMIN_IDS: "${BOT__ADMIN_IDS:-[]}"
 
+      DB__URL: "postgresql+asyncpg://user:password@pg:5432/learning_language"
+      DB__ECHO: "false"
+      DB__POOL_SIZE: "10"
+      DB__MAX_OVERFLOW: "20"
+    restart: unless-stopped
+    volumes:
+      - ./:/app
 
 networks:
   app-network:
     driver: bridge
-
-
 
 volumes:
   pgdata:

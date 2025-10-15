@@ -1,21 +1,24 @@
 import asyncio
 
 from aiogram.filters import Command
-
+import logging
 from admin.handlers import router
 from loader import bot, dp
 from admin.start_handlers import start_router
 from admin.quiz_handlers import quiz_router
-from config_data.config import logger, db_config
+from db_config.db_config import settings
+from config_data.config import logger
 from utils.set_commands import set_commands
 from middleware.middleware import DatabaseMiddleware
-from model.model import Base  # Импорт моделей
+from model.model import Base
 from database.db_main import start_import
 
 
 
 async def main():
     try:
+        logger.info("Checking database and importing data if needed...")
+        await start_import()
 
         dp.update.middleware(DatabaseMiddleware())
         logger.info('middleware registered')
