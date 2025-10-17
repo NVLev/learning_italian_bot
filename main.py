@@ -4,6 +4,7 @@ from aiogram.filters import Command
 import logging
 from admin.handlers import router
 from loader import bot, dp
+from admin.ai_handlers import router as ai_router
 from admin.start_handlers import start_router
 from admin.quiz_handlers import quiz_router
 from db_config.db_config import settings
@@ -25,6 +26,7 @@ async def main():
         dp.include_router(start_router)
         dp.include_router(router)
         dp.include_router(quiz_router)
+        dp.include_router(ai_router)
         logger.info('routers included')
         await set_commands(bot)
 

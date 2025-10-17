@@ -36,6 +36,10 @@ class BotConfig(BaseModel):
             raise ValueError("BOT_TOKEN must be valid")
         return v
 
+class OpenAIConfig(BaseModel):
+    api_key: str = Field(default="", description="OpenAI API Key")
+    enabled: bool = Field(default=False, description="Enable OpenAI features")
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -49,6 +53,7 @@ class Settings(BaseSettings):
     run: RunConfig = Field(default_factory=RunConfig)
     db: DatabaseConfig = Field(default_factory=DatabaseConfig)
     bot: Annotated[BotConfig, Field()]
+    openai: OpenAIConfig = Field(default_factory=OpenAIConfig)
 
 
 settings = Settings()

@@ -54,7 +54,7 @@ learning_italian_bot/
 ├── filters/
 │   └── filter.py
 │
-├── functions_for_handler/
+├── services/
 │   └── admin_functions.py
 │
 ├── inline_keyboard/

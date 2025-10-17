@@ -23,6 +23,7 @@ charset-normalizer = "^3.4.0"
 pydantic-settings = "^2.6.1"
 black = "^24.10.0"
 matplotlib = "^3.9.2"
+openai = "^2.4.0"
 
 
 [build-system]

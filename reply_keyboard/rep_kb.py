@@ -8,6 +8,8 @@ def main_kb():
     kb_list = [
         [KeyboardButton(text="📚 Фраза дня")],
         [KeyboardButton(text="📖 Изучаем слова"), KeyboardButton(text="📝 Тренируем слова")],
+        [KeyboardButton(text="🤖 Объяснить слово"), KeyboardButton(text="📝 Пример с словом")],
+        [KeyboardButton(text="🔍 Статус AI")]
 
     ]
     keyboard = ReplyKeyboardMarkup(
@@ -27,9 +29,7 @@ async def theme_keyboard(session: AsyncSession)-> ReplyKeyboardMarkup:
         themes = await get_all_themes(session)
         for theme in themes:
             builder.add(KeyboardButton(text=theme.name))
-        # theme_list = await get_all_themes(session)
-        # for item in theme_list:
-        #     builder.button(text=item.name)
+
     except Exception as e:
         logger.error(f"Ошибка получения тем: {str(e)}")
         builder.add(KeyboardButton(text="⚠️ Ошибка загрузки"))
@@ -39,14 +39,44 @@ async def theme_keyboard(session: AsyncSession)-> ReplyKeyboardMarkup:
     return builder.as_markup(resize_keyboard=True,
                              input_field_placeholder="Выберите тему:")
 
-# def create_spec_kb():
-#     kb_list = [
-#         [KeyboardButton(text="Отправить гео", request_location=True)],
-#         [KeyboardButton(text="Поделиться номером", request_contact=True)],
-#         [KeyboardButton(text="Отправить викторину/опрос", request_poll=KeyboardButtonPollType())]
-#     ]
-#     keyboard = ReplyKeyboardMarkup(keyboard=kb_list,
-#                                    resize_keyboard=True,
-#                                    one_time_keyboard=True,
-#                                    input_field_placeholder="Воспользуйтесь специальной клавиатурой:")
-#     return keyboard
+
+def ai_explain_kb():
+    """
+    Клавиатура для функции объяснения слов.
+
+    Returns:
+        ReplyKeyboardMarkup: Клавиатура с примерами слов для объяснения
+    """
+    kb_list = [
+        [KeyboardButton(text="Объяснить: ciao"), KeyboardButton(text="Объяснить: amore")],
+        [KeyboardButton(text="Объяснить: grazie"), KeyboardButton(text="Объяснить: per favore")],
+        [KeyboardButton(text="Назад")]
+    ]
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=kb_list,
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        input_field_placeholder="Выберите слово или введите своё:"
+    )
+    return keyboard
+
+
+def ai_example_kb():
+    """
+    Клавиатура для функции генерации примеров.
+
+    Returns:
+        ReplyKeyboardMarkup: Клавиатура с примерами слов
+    """
+    kb_list = [
+        [KeyboardButton(text="Пример: casa"), KeyboardButton(text="Пример: tempo")],
+        [KeyboardButton(text="Пример: lavoro"), KeyboardButton(text="Пример: bello")],
+        [KeyboardButton(text="Назад")]
+    ]
+    keyboard = ReplyKeyboardMarkup(
+        keyboard=kb_list,
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        input_field_placeholder="Выберите слово или введите своё:"
+    )
+    return keyboard

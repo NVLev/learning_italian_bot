@@ -10,12 +10,18 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from database.functions import get_all_themes, get_words_by_theme_id, get_all_idioms
 from aiogram.fsm.context import FSMContext
 from utils.states import Quiz
-from functions_for_handler.admin_functions import format_word_list
+from services.admin_functions import format_word_list
 
 
 router = Router()
 
 
+# фильтр для обработки неизвестных команд
+UNKNOWN_COMMANDS_FILTER = ~F.text.startswith((
+    "📚 Фраза дня", "📖 Изучаем слова", "📝 Тренируем слова",
+    "🤖 Объяснить слово", "📝 Пример с словом", "🔍 Статус AI",
+    "/start", "/help", "/dictionary", "/training", "/explain", "/ai_status", "/example", "/cancel"
+))
 
 # Фильтр для обработки нажатия на определенную тему, если выбрано - "Изучаем слова"
 # (т.е. состояние - no_quiz)- выводится список слов по теме
@@ -117,7 +123,12 @@ async def handle_back_button(callback_query: CallbackQuery):
                                 reply_markup=main_kb())
 
 
-@router.message()
-async def echo_message(msg: Message):
-    logger.info('echo started')
-    await msg.answer(f'{msg.text} - такой команды нет, выберите команду в меню')
+# @router.message(UNKNOWN_COMMANDS_FILTER)
+# async def echo_message(msg: Message):
+#     """
+#     Обработчик для неизвестных команд.
+#     Срабатывает только если сообщение не начинается с известных команд.
+#     """
+#     logger.info(f'Неизвестная команда: {msg.text}')
+#     await msg.answer(f'"{msg.text}" - такой команды нет, выберите команду в меню')
+

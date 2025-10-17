@@ -7,6 +7,9 @@ async def set_commands(bot: Bot):
         BotCommand(command='help', description='\U0001F4A1 Обзор команд'),
         BotCommand(command='learn', description='📖 Изучаем слова'),
         BotCommand(command='train', description='📝 Тренируем слова'),
+        BotCommand(command="/explain", description="Объяснить слово (AI)"),
+        BotCommand(command="/ai_status", description="Статус AI"),
+        BotCommand(command="/example", description="Статус AI"),
     ]
     await bot.set_my_commands(commands)
 
