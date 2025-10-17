@@ -7,6 +7,7 @@ from loader import bot, dp
 from admin.ai_handlers import router as ai_router
 from admin.start_handlers import start_router
 from admin.quiz_handlers import quiz_router
+from admin.advanced_handlers import router as advanced_router
 from db_config.db_config import settings
 from config_data.config import logger
 from utils.set_commands import set_commands
@@ -27,6 +28,7 @@ async def main():
         dp.include_router(router)
         dp.include_router(quiz_router)
         dp.include_router(ai_router)
+        dp.include_router(advanced_router)
         logger.info('routers included')
         await set_commands(bot)
 

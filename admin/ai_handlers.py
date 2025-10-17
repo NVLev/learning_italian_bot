@@ -3,7 +3,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-
+import html
 from services.openai_service import get_openai_service, is_openai_available
 from database.db_helper import db_helper
 from sqlalchemy import select
@@ -52,7 +52,7 @@ async def cmd_explain(message: Message, state: FSMContext):
 
     if explanation:
         response = f"🤖 **Объяснение слова '{word}'**\n\n{explanation}"
-        await message.answer(response, parse_mode="Markdown")
+        await message.answer(html.escape(response))
     else:
         await message.answer("❌ Не удалось получить объяснение. Попробуйте позже.")
 
@@ -112,12 +112,12 @@ async def cmd_example(message: Message):
 
     if example:
         response = f"📝 **Пример со словом '{word}'**\n\n{example}"
-        await message.answer(response, parse_mode="Markdown")
+        await message.answer(html.escape(response))
     else:
         await message.answer("❌ Не удалось сгенерировать пример. Попробуйте позже.")
 
 
-@router.message(F.text == "🤖 Объяснить слово")
+@router.message(F.text == "🤖 Объяснить слово (AI)")
 async def ai_explain_button(message: Message, state: FSMContext):
     """
     Обработчик кнопки 'Объяснить слово'.
@@ -157,7 +157,7 @@ async def ai_status_button(message: Message):
 
     await message.answer(response)
 
-@router.message(F.text == "📝 Пример со словом")
+@router.message(F.text == "📝 Пример со словом (AI)")
 async def ai_example_button(message: Message, state: FSMContext):
     """
     ИСПРАВЛЕНО: Обработчик кнопки 'Пример с словом'.

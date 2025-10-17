@@ -4,12 +4,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from config_data.config import logger
 from database.functions import get_all_themes
 
+
+
 def main_kb():
     kb_list = [
         [KeyboardButton(text="📚 Фраза дня")],
         [KeyboardButton(text="📖 Изучаем слова"), KeyboardButton(text="📝 Тренируем слова")],
-        [KeyboardButton(text="🤖 Объяснить слово"), KeyboardButton(text="📝 Пример со словом")],
-        [KeyboardButton(text="🔍 Статус AI")]
+        [KeyboardButton(text="🤖 Объяснить слово (AI)"), KeyboardButton(text="📝 Пример со словом (AI)")],
+        [KeyboardButton(text="📝 Упражнения (AI)")], [KeyboardButton(text="💬 Практика диалога (AI)")]
 
     ]
     keyboard = ReplyKeyboardMarkup(
