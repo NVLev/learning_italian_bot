@@ -8,7 +8,7 @@ def main_kb():
     kb_list = [
         [KeyboardButton(text="📚 Фраза дня")],
         [KeyboardButton(text="📖 Изучаем слова"), KeyboardButton(text="📝 Тренируем слова")],
-        [KeyboardButton(text="🤖 Объяснить слово"), KeyboardButton(text="📝 Пример с словом")],
+        [KeyboardButton(text="🤖 Объяснить слово"), KeyboardButton(text="📝 Пример со словом")],
         [KeyboardButton(text="🔍 Статус AI")]
 
     ]

@@ -54,7 +54,7 @@ class OpenAIService:
     async def explain_word(
             self,
             italian_word: str,
-            russian_translation: str
+            russian_translation: str = ""
     ) -> Optional[str]:
         """
         Генерация объяснения для итальянского слова.
@@ -71,24 +71,27 @@ class OpenAIService:
             return None
 
         try:
+            # ИСПРАВЛЕНО: Упрощенный промпт без перевода
             prompt = f"""Ты - преподаватель итальянского языка для русскоговорящих студентов.
 
-Слово: {italian_word} ({russian_translation})
+        Слово: {italian_word}
 
-Дай краткое объяснение (максимум 200 слов):
-1. 2-3 примера использования в итальянских предложениях с переводом
-2. 1-2 синонима (если есть)
-3. Короткую мнемоническую подсказку для запоминания
+        Дай краткое объяснение (максимум 250 слов):
+        1. Перевод на русский
+        2. 2-3 примера использования в итальянских предложениях с переводом
+        3. 1-2 синонима (если есть)
+        4. Короткую мнемоническую подсказку для запоминания
 
-Формат ответа должен быть понятным и структурированным."""
+        Формат ответа должен быть понятным и структурированным."""
 
             response = await self.client.chat.completions.create(
                 model="gpt-4o",
                 messages=[
-                    {"role": "system", "content": "Ты - опытный преподаватель итальянского языка."},
+                    {"role": "system",
+                     "content": "Ты - опытный преподаватель итальянского языка для русских студентов."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=500,
+                max_tokens=600,
                 temperature=0.7
             )
 
@@ -98,7 +101,7 @@ class OpenAIService:
             return explanation
 
         except Exception as e:
-            logger.error(f"Error generating explanation: {e}")
+            logger.error(f"Ошибка генерации объяснения: {e}")
             return None
 
     async def generate_example_sentence(
