@@ -27,12 +27,21 @@ services:
     environment:
       DB__URL: "postgresql+asyncpg://user:password@pg:5432/learning_language"
     volumes:
-      - ./migration:/app/migration  # Монтируем папку миграций
+      - ./migration:/app/migration
       - ./model:/app/model
       - ./alembic.ini:/app/alembic.ini
-    command: sleep infinity  # Держим контейнер живым
+    command: >
+      sh -c "
+        echo 'Waiting for database...' &&
+        sleep 5 &&
+        echo 'Applying migrations...' &&
+        alembic upgrade head &&
+        echo 'Migrations completed!' &&
+        tail -f /dev/null
+      "
     profiles:
       - dev
+      - migrate
 
   bot:
     build: .

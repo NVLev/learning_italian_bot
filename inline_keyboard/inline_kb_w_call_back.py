@@ -46,12 +46,11 @@ def create_quiz_keyboard(possible_answers: list, correct_answer: str, theme_id: 
 
 
 def create_next_question_keyboard(theme_id: str) -> InlineKeyboardMarkup:
-    """
-    Создает клавиатуру с кнопкой "Следующий вопрос"
-    """
-    return InlineKeyboardMarkup(inline_keyboard=[[
-        InlineKeyboardButton(text="Следующий вопрос", callback_data=theme_id)
-    ]])
+    """Клавиатура для продолжения или завершения квиза"""
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="➡️ Следующий вопрос", callback_data=theme_id)],
+        [InlineKeyboardButton(text="🏁 Завершить квиз", callback_data="back")]
+    ])
 
 
 def generate_quiz_options(words: list, current_word) -> list:

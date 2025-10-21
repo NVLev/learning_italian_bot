@@ -5,6 +5,9 @@ async def set_commands(bot: Bot):
     commands = [
         BotCommand(command='start', description='🚀 Запуск бота'),
         BotCommand(command='help', description='💡 Обзор команд'),
+        BotCommand(command='stats', description='📊 Моя статистика'),
+        BotCommand(command='level', description='⭐ Мой уровень'),
+        BotCommand(command='streak', description='🔥 Мой streak'),
         BotCommand(command='learn', description='📖 Изучаем слова'),
         BotCommand(command="explain", description="🤖 Объяснить слово (AI)"),
         BotCommand(command="example", description="📝 Пример со словом (AI)"),

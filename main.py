@@ -8,12 +8,16 @@ from admin.ai_handlers import router as ai_router
 from admin.start_handlers import start_router
 from admin.quiz_handlers import quiz_router
 from admin.advanced_handlers import router as advanced_router
+from admin.stats_handlers import router as stats_router
 from db_config.db_config import settings
 from config_data.config import logger
 from utils.set_commands import set_commands
 from middleware.middleware import DatabaseMiddleware
 from model.model import Base
 from database.db_main import start_import
+from middleware.user_middleware import UserMiddleware
+
+
 
 
 
@@ -23,12 +27,14 @@ async def main():
         await start_import()
 
         dp.update.middleware(DatabaseMiddleware())
+        dp.update.middleware(UserMiddleware())
         logger.info('middleware registered')
         dp.include_router(start_router)
         dp.include_router(router)
         dp.include_router(quiz_router)
         dp.include_router(ai_router)
         dp.include_router(advanced_router)
+        dp.include_router(stats_router)
         logger.info('routers included')
         await set_commands(bot)
 

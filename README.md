@@ -64,19 +64,21 @@ AI-powered интерактивный бот для изучения италь�
 ```
 learning_italian_bot/
 ├── admin/                      # Handlers 
-│   ├── advanced_handlers.py   # AI dialogs and exercises
+│   ├── advanced_handlers.py    # AI dialogs and exercises
 │   ├── ai_handlers.py          # AI explanations and examples
 │   ├── quiz_handlers.py        # Quiz
 │   ├── handlers.py             # Basic handlers
 │   └── start_handlers.py       # Starting commands
 │
 ├── services/                   # Business logic layer
+│   ├── admin_functions.py      # Formatting and help message
 │   ├── openai_service.py       # OpenAI API integration
-│   ├── conversation_service.py # Управление диалогами
-│   └── exercise_service.py     # Генерация упражнений
+│   ├── conversation_service.py # Managing dialogs (AI)
+│   ├── user_service.py         # Manging users and user progress
+│   └── exercise_service.py     # Exercise generation (AI)
 │
 ├── database/                   # Data access layer
-│   ├── db_helper.py            # Async session management
+│   ├── db_helper.py            # Async session management 
 │   ├── functions.py            # Database operations
 │   └── db_main.py              # Data import scripts
 │
