@@ -16,7 +16,10 @@ from utils.states import Quiz
 from services.user_service import UserService
 from model.model import User, Vocabulary
 
+
+
 quiz_router = Router()
+
 
 
 @quiz_router.callback_query(F.data.in_({str(i) for i in range(1, 19)}), Quiz.quiz_start)
@@ -24,7 +27,7 @@ async def quiz_word_by_theme(
         callback: CallbackQuery,
         state: FSMContext,
         session: AsyncSession,
-        db_user: User
+        db_user: User | None = None
 ):
     """
     Квиз - выбор слова и генерация вопроса
@@ -32,6 +35,17 @@ async def quiz_word_by_theme(
     logger.info('quiz filter worked')
     current_state = await state.get_state()
     logger.info(f'Current state: {current_state}')
+    if db_user is None:
+        # Если middleware не передал пользователя — создаем / достаем его вручную
+        logger.warning("db_user not found in data, fetching from DB via UserService.get_or_create_user()")
+        user = await UserService.get_or_create_user(
+            session=session,
+            telegram_id=callback.from_user.id,
+            username=callback.from_user.username,
+            first_name=callback.from_user.first_name
+        )
+    else:
+        user = db_user
 
     try:
         theme_id = int(callback.data)
@@ -86,8 +100,8 @@ async def quiz_word_by_theme(
 async def check_answer(
         callback: CallbackQuery,
         state: FSMContext,
-        db_user: User,
-        session: AsyncSession
+        session: AsyncSession,
+        db_user: User | None = None
 ):
     """
     Обработчик проверки ответа:
@@ -96,6 +110,15 @@ async def check_answer(
     - Обновляет статистику сессии
     - Предлагает продолжить
     """
+    if db_user is None:
+        user = await UserService.get_or_create_user(
+            session=session,
+            telegram_id=callback.from_user.id,
+            username=callback.from_user.username,
+            first_name=callback.from_user.first_name
+        )
+    else:
+        user = db_user
     try:
         # Парсим callback data
         data = callback.data.split("_")

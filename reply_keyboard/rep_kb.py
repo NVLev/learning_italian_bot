@@ -11,6 +11,7 @@ def main_kb():
         [KeyboardButton(text="📚 Фраза дня")],
         [KeyboardButton(text="📖 Изучаем слова"), KeyboardButton(text="📝 Тренируем слова")],
         [KeyboardButton(text="🤖 Объяснить слово (AI)"), KeyboardButton(text="📝 Пример со словом (AI)")],
+        [KeyboardButton(text="📊 Моя статистика"), KeyboardButton(text="🔥 Мой streak")],
         [KeyboardButton(text="📝 Упражнения (AI)")], [KeyboardButton(text="💬 Практика диалога (AI)")]
 
     ]

@@ -3,7 +3,7 @@ Middleware для автоматической регистрации/обнов
 """
 from typing import Callable, Dict, Any, Awaitable
 from aiogram import BaseMiddleware
-from aiogram.types import TelegramObject, User as TelegramUser
+from aiogram.types import TelegramObject, User as TelegramUser, Message, CallbackQuery, TelegramObject
 from services.user_service import UserService
 from config_data.config import logger
 
@@ -25,7 +25,13 @@ class UserMiddleware(BaseMiddleware):
         Перехватывает все события и регистрирует пользователя.
         """
         # Получаем Telegram user из события
-        telegram_user: TelegramUser | None = data.get("event_from_user")
+        telegram_user = None
+
+        if hasattr(event, 'from_user') and event.from_user:
+            telegram_user = event.from_user
+        else:
+            # Пробуем альтернативный способ через data
+            telegram_user = data.get("event_from_user")
 
         if telegram_user and not telegram_user.is_bot:
             session = data.get("session")
