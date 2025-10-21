@@ -15,30 +15,78 @@ from schemas.schemas import ThemeRead, VocabularyRead, IdiomRead
 async def get_words_by_theme_id(
     session: AsyncSession,  # Принимаем сессию извне
     theme_id: int
-) -> list[VocabularyRead] | list[Any]:
+) -> list[Vocabulary] | list[Any]:
     """
     Функция получает список слов в зависимости от темы
     """
     try:
-        stmt = select(Vocabulary).join(Theme).filter(Theme.id == theme_id)
+        stmt = select(Vocabulary).where(Vocabulary.theme_id == theme_id)
+        result = await session.execute(stmt)
+        words = list(result.scalars().all())
+
+        logger.info(f"Found {len(words)} words for theme_id {theme_id}")
+        return words
+
+    except NoResultFound:
+        logger.warning(f"No words found for theme: {theme_id}")
+        return []
+    except Exception as e:
+        logger.error(f"Unexpected error in get_words_by_theme_id: {e}")
+        return []
+    # try:
+    #     stmt = select(Vocabulary).join(Theme).filter(Theme.id == theme_id)
+    #     result = await session.execute(stmt)
+    #     words = result.scalars().all()
+    #
+    #     words_reads = []
+    #     for word in words:
+    #         try:
+    #             words_read = VocabularyRead(italian_word=word.italian_word, rus_word=word.rus_word)
+    #             logger.info(f"Reading word: {words_read}")
+    #             words_reads.append(words_read)
+    #         except ValidationError as e:
+    #             logger.error(f"Pydantic validation error for word: {word}, Error: {e}")
+    #
+    #     return words_reads
+    except NoResultFound:
+        logger.warning(f"No words found for theme: {theme_id}")
+        return []
+    except Exception as e:
+        logger.error(f"Unexpected error in get_words_by_theme_id: {e}")
+        return []
+
+async def get_words_by_theme_id_as_schemas(
+    session: AsyncSession,
+    theme_id: int
+) -> list[VocabularyRead]:
+    """
+    Альтернативная функция: возвращает слова как схемы Pydantic
+    """
+    try:
+        stmt = select(Vocabulary).where(Vocabulary.theme_id == theme_id)
         result = await session.execute(stmt)
         words = result.scalars().all()
 
         words_reads = []
         for word in words:
             try:
-                words_read = VocabularyRead(italian_word=word.italian_word, rus_word=word.rus_word)
-                logger.info(f"Reading word: {words_read}")
+                # Используем model_validate с полными данными
+                word_data = {
+                    'id': word.id,
+                    'italian_word': word.italian_word,
+                    'rus_word': word.rus_word,
+                    'theme_id': word.theme_id,
+                    'difficulty': word.difficulty,
+                    'usage_example': word.usage_example
+                }
+                words_read = VocabularyRead.model_validate(word_data)
                 words_reads.append(words_read)
             except ValidationError as e:
                 logger.error(f"Pydantic validation error for word: {word}, Error: {e}")
 
         return words_reads
-    except NoResultFound:
-        logger.warning(f"No words found for theme: {theme_id}")
-        return []
     except Exception as e:
-        logger.error(f"Unexpected error in get_words_by_theme_id: {e}")
+        logger.error(f"Unexpected error in get_words_by_theme_id_as_schemas: {e}")
         return []
 
 async def get_all_themes(session: AsyncSession) -> list[ThemeRead] | list[Any]:
