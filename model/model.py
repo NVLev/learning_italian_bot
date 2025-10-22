@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Boolean, Float
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Boolean, Float, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Mapped, mapped_column, relationship
 from datetime import datetime, timezone
@@ -28,16 +28,14 @@ class User(Base):
     longest_streak: Mapped[int] = mapped_column(Integer, default=0)
     last_activity_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
-
     level: Mapped[int] = mapped_column(Integer, default=1)
     experience_points: Mapped[int] = mapped_column(Integer, default=0)
 
     notifications_enabled: Mapped[bool] = mapped_column(Boolean, default=True)
     preferred_difficulty: Mapped[str | None] = mapped_column(String(20))  # easy, medium, hard
 
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
-    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc),
-                                                 onupdate=lambda: datetime.now(timezone.utc))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     word_progress = relationship("UserWordProgress", back_populates="user", cascade="all, delete-orphan")
     training_sessions = relationship("TrainingSession", back_populates="user", cascade="all, delete-orphan")
@@ -52,6 +50,7 @@ class User(Base):
 
     def __repr__(self):
         return f"<User(telegram_id={self.telegram_id}, username={self.username})>"
+
 
 
 class Theme(Base):
@@ -113,8 +112,8 @@ class UserWordProgress(Base):
     next_review_date: Mapped[datetime | None] = mapped_column(DateTime)  # Когда нужно повторить
 
     # Временные метки
-    first_seen_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    last_reviewed_at: Mapped[datetime | None] = mapped_column(DateTime)
+    first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    last_reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     # Relationships
     user = relationship("User", back_populates="word_progress")

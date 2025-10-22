@@ -33,32 +33,11 @@ async def get_words_by_theme_id(
     except Exception as e:
         logger.error(f"Unexpected error in get_words_by_theme_id: {e}")
         return []
-    # try:
-    #     stmt = select(Vocabulary).join(Theme).filter(Theme.id == theme_id)
-    #     result = await session.execute(stmt)
-    #     words = result.scalars().all()
-    #
-    #     words_reads = []
-    #     for word in words:
-    #         try:
-    #             words_read = VocabularyRead(italian_word=word.italian_word, rus_word=word.rus_word)
-    #             logger.info(f"Reading word: {words_read}")
-    #             words_reads.append(words_read)
-    #         except ValidationError as e:
-    #             logger.error(f"Pydantic validation error for word: {word}, Error: {e}")
-    #
-    #     return words_reads
-    except NoResultFound:
-        logger.warning(f"No words found for theme: {theme_id}")
-        return []
-    except Exception as e:
-        logger.error(f"Unexpected error in get_words_by_theme_id: {e}")
-        return []
 
 async def get_words_by_theme_id_as_schemas(
     session: AsyncSession,
     theme_id: int
-) -> list[VocabularyRead]:
+) -> list[Vocabulary]:
     """
     Альтернативная функция: возвращает слова как схемы Pydantic
     """
@@ -89,7 +68,7 @@ async def get_words_by_theme_id_as_schemas(
         logger.error(f"Unexpected error in get_words_by_theme_id_as_schemas: {e}")
         return []
 
-async def get_all_themes(session: AsyncSession) -> list[ThemeRead] | list[Any]:
+async def get_all_themes(session: AsyncSession) -> list[Theme] | list[Any]:
     """
     Функция получает список тем
     """
@@ -120,7 +99,7 @@ async def get_all_themes(session: AsyncSession) -> list[ThemeRead] | list[Any]:
         logger.exception(f"An unexpected error occurred in get_all_themes: {e}")
         return []
 
-async def get_all_idioms(session: AsyncSession) -> list[IdiomRead] | list[Any]:
+async def get_all_idioms(session: AsyncSession) -> list[Idiom] | list[Any]:
     """
     Функция получает идиомы
     """
@@ -133,6 +112,7 @@ async def get_all_idioms(session: AsyncSession) -> list[IdiomRead] | list[Any]:
         for idiom in idioms:
             try:
                 idiom_read = IdiomRead.model_validate({
+                    'id': idiom.id,
                     'italian_idiom': idiom.italian_idiom,
                     'rus_idiom': idiom.rus_idiom
                 })

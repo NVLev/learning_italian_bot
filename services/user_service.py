@@ -189,25 +189,45 @@ class UserService:
             progress = UserWordProgress(
                 user_id=user_id,
                 word_id=word_id,
-                status='new'
+                status='new',
+                first_seen_at=UserService._now(),
+                correct_count=0,
+                wrong_count=0,
+                repetitions=0
             )
             session.add(progress)
-        
+            logger.info(f"Created new word progress: user_id={user_id}, word_id={word_id}")
+
+        logger.info(
+            f"Current progress: status={progress.status}, correct={progress.correct_count}, wrong={progress.wrong_count}")
+        if progress.correct_count is None:
+            progress.correct_count = 0
+        if progress.wrong_count is None:
+            progress.wrong_count = 0
+        if progress.repetitions is None:
+            progress.repetitions = 0
+
         # Обновить счетчики
         if is_correct:
             progress.correct_count += 1
             progress.repetitions += 1
         else:
             progress.wrong_count += 1
-            progress.repetitions = 0  # Сброс при ошибке
-        
+            progress.repetitions = 0
+        old_status = progress.status
         # Обновить статус на основе успешности
         if progress.correct_count >= 3 and progress.status == 'new':
             progress.status = 'learning'
+            logger.info(f"Word {word_id} status changed from {old_status} to {progress.status}")
         elif progress.correct_count >= 7 and progress.status == 'learning':
             progress.status = 'learned'
+            logger.info(f"Word {word_id} status changed from {old_status} to {progress.status}")
         elif progress.correct_count >= 15 and progress.accuracy > 90:
             progress.status = 'mastered'
+            logger.info(f"Word {word_id} status changed from {old_status} to {progress.status}")
+        else:
+            logger.info(
+                f"Word {word_id} status remains {progress.status} (correct={progress.correct_count}, accuracy={progress.accuracy})")
         
         progress.last_reviewed_at = UserService._now()
         
@@ -237,15 +257,34 @@ class UserService:
             user.total_wrong_answers += 1
         
         # Подсчитать изученные слова (learned + mastered)
-        learned_words = await session.execute(
-            select(func.count(UserWordProgress.id))
-            .where(
-                UserWordProgress.user_id == user_id,
-                UserWordProgress.status.in_(['learned', 'mastered'])
-            )
+        learned_words_query = select(func.count(UserWordProgress.id)).where(
+            UserWordProgress.user_id == user_id,
+            UserWordProgress.status.in_(['learned', 'mastered'])
         )
-        user.total_words_learned = learned_words.scalar()
-        
+        logger.info(f"Learned words query: {learned_words_query}")
+        # --------------------для отладки------------------------------------
+        learned_words_result = await session.execute(learned_words_query)
+        learned_words_count = learned_words_result.scalar()
+
+        logger.info(f"Found {learned_words_count} learned/mastered words for user {user_id}")
+
+        status_stats = await session.execute(
+            select(
+                UserWordProgress.status,
+                func.count(UserWordProgress.id)
+            )
+            .where(UserWordProgress.user_id == user_id)
+            .group_by(UserWordProgress.status)
+        )
+
+        status_counts = {row[0]: row[1] for row in status_stats}
+        logger.info(f"Detailed word status counts for user {user_id}: {status_counts}")
+
+        user.total_words_learned = learned_words_count
+        logger.info(f"Set total_words_learned to {learned_words_count}")
+        # --------------------конец для отладки------------------------------------
+
+
         # Добавить опыт
         user.experience_points += 10 if is_correct else 2
         

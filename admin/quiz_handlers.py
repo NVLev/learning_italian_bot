@@ -4,7 +4,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery
 from sqlalchemy.ext.asyncio import AsyncSession
 from datetime import datetime, timezone
-
+from  sqlalchemy import select
 from config_data.config import logger
 from database.functions import get_words_by_theme_id
 from inline_keyboard.inline_kb_w_call_back import (
@@ -14,9 +14,7 @@ from inline_keyboard.inline_kb_w_call_back import (
 )
 from utils.states import Quiz
 from services.user_service import UserService
-from model.model import User, Vocabulary
-
-
+from model.model import User, Vocabulary, UserWordProgress
 
 quiz_router = Router()
 
@@ -82,6 +80,23 @@ async def quiz_word_by_theme(
             italian_word=current_word.italian_word,
             current_word_id=current_word.id  # ← ВАЖНО! Сохраняем ID
         )
+        progress_result = await session.execute(
+            select(UserWordProgress).where(
+                UserWordProgress.user_id == user.id,  # ← используем user.id
+                UserWordProgress.word_id == current_word.id
+            )
+        )
+        progress = progress_result.scalar_one_or_none()
+
+        status_text = ""
+        if progress:
+            status_map = {
+                'new': '🔴 Новое слово',
+                'learning': '🟡 Изучается',
+                'learned': '🟢 Выучено',
+                'mastered': '🔵 Освоено'
+            }
+            status_text = f"\n{status_map.get(progress.status, '')}"
 
         # Отправляем вопрос
         await callback.message.answer(
@@ -134,6 +149,9 @@ async def check_answer(
         italian_word = user_data.get("italian_word", "")
         current_word_id = user_data.get('current_word_id')
 
+        logger.info(f"DEBUG: current_word_id={current_word_id}, type={type(current_word_id)}")
+        logger.info(f"DEBUG: db_user.id={db_user.id}, is_correct={is_correct}")
+
         # Обновляем счетчики сессии
         correct_count = user_data.get('correct_count', 0)
         wrong_count = user_data.get('wrong_count', 0)
@@ -156,6 +174,7 @@ async def check_answer(
 
         # Сохраняем прогресс по слову (если есть word_id)
         if current_word_id:
+            logger.info(f"DEBUG: Calling update_word_progress...")
             try:
                 await UserService.update_word_progress(
                     session=session,
@@ -171,6 +190,7 @@ async def check_answer(
                 logger.error(f"Error saving word progress: {e}")
         else:
             logger.warning("current_word_id not found in state")
+            logger.warning(f"DEBUG: Available keys in state: {user_data.keys()}")
 
         # Показываем статистику сессии
         total = correct_count + wrong_count
