@@ -109,7 +109,7 @@ class UserWordProgress(Base):
     repetitions: Mapped[int] = mapped_column(Integer, default=0)  # Количество успешных повторений
     easiness_factor: Mapped[float] = mapped_column(Float, default=2.5)  # Фактор легкости (1.3-2.5)
     interval_days: Mapped[int] = mapped_column(Integer, default=0)  # Интервал до следующего повторения
-    next_review_date: Mapped[datetime | None] = mapped_column(DateTime)  # Когда нужно повторить
+    next_review_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     # Временные метки
     first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -153,8 +153,8 @@ class TrainingSession(Base):
     correct_answers: Mapped[int] = mapped_column(Integer, default=0)
     wrong_answers: Mapped[int] = mapped_column(Integer, default=0)
 
-    started_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-    completed_at: Mapped[datetime | None] = mapped_column(DateTime)
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     duration_seconds: Mapped[int | None] = mapped_column(Integer)  # Длительность сессии
 
     user = relationship("User", back_populates="training_sessions")

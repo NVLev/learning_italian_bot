@@ -4,6 +4,7 @@ from typing import List
 from aiogram.filters.callback_data import CallbackData
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+from config_data.config import logger
 
 
 async def theme_keyboard(themes) -> InlineKeyboardMarkup:
@@ -45,12 +46,26 @@ def create_quiz_keyboard(possible_answers: list, correct_answer: str, theme_id: 
     ])
 
 
-def create_next_question_keyboard(theme_id: str) -> InlineKeyboardMarkup:
+def create_next_question_keyboard(theme_id: str | int) -> InlineKeyboardMarkup:
     """Клавиатура для продолжения или завершения квиза"""
-    return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="➡️ Следующий вопрос", callback_data=theme_id)],
-        [InlineKeyboardButton(text="🏁 Завершить квиз", callback_data="back")]
+    theme_id = str(theme_id)  # гарантируем строку
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="➡️ Следующий вопрос",
+                callback_data=f"next_{theme_id}"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="🏁 Завершить квиз",
+                callback_data="back"
+            )
+        ]
     ])
+    logger.info(f"Created next question keyboard with theme_id: {theme_id}")
+    return keyboard
+
 
 
 def generate_quiz_options(words: list, current_word) -> list:

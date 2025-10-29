@@ -140,11 +140,11 @@ async def cmd_train(
         logger.info(f"Current state: {current_state}")  # Добавлен f-string
 
 
-@router.callback_query(F.data == 'back')
-async def handle_back_button(callback_query: CallbackQuery):
-    await callback_query.answer('Вы вернулись в главное меню',
-                                reply_markup=main_kb())
-
+# @router.callback_query(F.data == 'back')
+# async def handle_back_button(callback_query: CallbackQuery):
+#     await callback_query.answer('Вы вернулись в главное меню',
+#                                 reply_markup=main_kb())
+#
 
 # @router.message(UNKNOWN_COMMANDS_FILTER)
 # async def echo_message(msg: Message):

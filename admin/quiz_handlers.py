@@ -1,5 +1,6 @@
 import random
 from aiogram import Router, F
+from aiogram.dispatcher.dispatcher import SkipHandler
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -16,8 +17,56 @@ from utils.states import Quiz
 from services.user_service import UserService
 from model.model import User, Vocabulary, UserWordProgress
 
+async def quiz_word_by_theme_from_next(
+        callback: CallbackQuery,
+        state: FSMContext,
+        session: AsyncSession,
+        db_user: User,
+        theme_id: int
+):
+    """Создаёт следующий вопрос, когда пользователь нажал 'Следующий вопрос'"""
+    try:
+        logger.info(f"Starting next quiz question for theme_id={theme_id}")
+        words = await get_words_by_theme_id(session, theme_id)
+        if not words:
+            await callback.message.answer("В этой теме пока нет слов для тренировки 😔")
+            return
+
+        current_word = random.choice(words)
+        possible_answers = generate_quiz_options(words, current_word)
+        keyboard = create_quiz_keyboard(
+            possible_answers=possible_answers,
+            correct_answer=current_word.rus_word,
+            theme_id=str(theme_id),
+        )
+
+        await state.update_data(
+            correct_answer=current_word.rus_word,
+            italian_word=current_word.italian_word,
+            current_word_id=current_word.id
+        )
+
+        await callback.message.answer(
+            f"Выберите правильный перевод слова:\n\n<b>{current_word.italian_word}</b>",
+            reply_markup=keyboard,
+            parse_mode="HTML"
+        )
+        await callback.answer()
+
+    except Exception as e:
+        logger.error(f"Error in quiz_word_by_theme_from_next: {e}", exc_info=True)
+        await callback.message.answer("Ошибка при генерации следующего вопроса")
+
+
+
 quiz_router = Router()
 
+@quiz_router.callback_query()
+async def debug_all_callbacks(callback: CallbackQuery):
+    """Отладочный обработчик для всех callback'ов"""
+    logger.warning(f"🔍 CALLBACK RECEIVED: {callback.data!r} from user {callback.from_user.id}")
+    await callback.answer(f"Callback: {callback.data}")
+    raise SkipHandler
 
 
 @quiz_router.callback_query(F.data.in_({str(i) for i in range(1, 19)}), Quiz.quiz_start)
@@ -65,14 +114,13 @@ async def quiz_word_by_theme(
 
         # Инициализируем данные сессии при первом вопросе
         user_data = await state.get_data()
-        if not user_data.get('session_started'):
-            await state.update_data(
-                session_started=True,
-                session_start_time=datetime.now(timezone.utc),
-                correct_count=0,
-                wrong_count=0,
-                theme_id=theme_id
-            )
+        await state.update_data(
+            session_started=True,
+            session_start_time=UserService._now(),
+            correct_count=0,
+            wrong_count=0,
+            theme_id=theme_id
+        )
 
         # Сохраняем ID текущего слова для отслеживания прогресса
         await state.update_data(
@@ -96,7 +144,7 @@ async def quiz_word_by_theme(
                 'learned': '🟢 Выучено',
                 'mastered': '🔵 Освоено'
             }
-            status_text = f"\n{status_map.get(progress.status, '')}"
+            status_text = f"\n{status_map.get       (progress.status, '')}"
 
         # Отправляем вопрос
         await callback.message.answer(
@@ -217,8 +265,26 @@ async def check_answer(
         logger.error(f"Error in check_answer: {e}", exc_info=True)
         await callback.message.answer("Произошла ошибка при обработке ответа")
 
+@quiz_router.callback_query(F.data.startswith("next_"))
+async def next_question(
+        callback: CallbackQuery,
+        state: FSMContext,
+        session: AsyncSession,
+        db_user: User
+):
+    """Переход к следующему вопросу"""
+    try:
+        theme_id = int(callback.data.split("_")[1])
+        # Вызываем процесс генерации следующего вопроса напрямую,
+        # но передаём theme_id как число
+        logger.info(f"Next question requested for theme_id={theme_id}")
+        await quiz_word_by_theme_from_next(callback, state, session, db_user, theme_id)
+    except Exception as e:
+        logger.error(f"Error in next_question: {e}", exc_info=True)
+        await callback.message.answer("Ошибка при переходе к следующему вопросу")
 
-@quiz_router.callback_query(F.data == "back", Quiz.quiz_start)
+
+@quiz_router.callback_query(F.data == "back")
 async def end_quiz_session(
         callback: CallbackQuery,
         state: FSMContext,
@@ -226,8 +292,10 @@ async def end_quiz_session(
         session: AsyncSession
 ):
     """
-    ДОБАВЛЕНО: Завершение квиза и сохранение сессии
+    Завершение квиза и сохранение сессии
     """
+    logger.info(f"end_quiz_session called! data={callback.data}, state={await state.get_state()}")
+
     try:
         user_data = await state.get_data()
 
@@ -245,7 +313,7 @@ async def end_quiz_session(
         # Рассчитываем длительность
         duration_seconds = None
         if session_start_time:
-            duration = datetime.now(timezone.utc) - session_start_time
+            duration = UserService._now() - session_start_time
             duration_seconds = int(duration.total_seconds())
 
         # Сохраняем тренировочную сессию
@@ -259,6 +327,7 @@ async def end_quiz_session(
                 wrong_answers=wrong_count,
                 duration_seconds=duration_seconds
             )
+            logger.info(f"✓ Training session saved: {correct_count} correct, {wrong_count} wrong")
 
             # Показываем итоги
             total = correct_count + wrong_count
@@ -284,3 +353,4 @@ async def end_quiz_session(
         logger.error(f"Error in end_quiz_session: {e}", exc_info=True)
         await callback.message.answer("Ошибка при сохранении результатов")
         await state.clear()
+

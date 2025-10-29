@@ -2,6 +2,7 @@ from datetime import datetime, timedelta, timezone
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
 from model.model import User, UserWordProgress, TrainingSession, Vocabulary
+from utils.datetime_utils import now_utc
 import logging
 
 logger = logging.getLogger(__name__)
@@ -13,7 +14,7 @@ class UserService:
     @staticmethod
     def _now() -> datetime:
         """Получить текущее время в UTC"""
-        return datetime.now(timezone.utc)
+        return now_utc()
 
     @staticmethod
     async def get_or_create_user(
@@ -320,6 +321,14 @@ class UserService:
             
         Returns:
             Created TrainingSession object
+            :param session:
+            :param user_id:
+            :param session_type:
+            :param theme_id:
+            :param correct_answers:
+            :param wrong_answers:
+            :param duration_seconds:
+            :param started_at:
         """
         training = TrainingSession(
             user_id=user_id,
@@ -328,6 +337,7 @@ class UserService:
             total_questions=correct_answers + wrong_answers,
             correct_answers=correct_answers,
             wrong_answers=wrong_answers,
+            started_at=UserService._now(),
             completed_at=UserService._now(),
             duration_seconds=duration_seconds
         )
