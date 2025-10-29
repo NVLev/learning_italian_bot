@@ -24,3 +24,5 @@ audio.zip
 .pytest_cache/
 /models/
 .env
+migration/versions/*.py
+!migration/versions/.gitkeep
