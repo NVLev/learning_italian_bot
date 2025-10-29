@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateT
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Mapped, mapped_column, relationship
 from datetime import datetime, timezone
+from utils.datetime_utils import now_utc
 
 Base = declarative_base()
 
@@ -34,8 +35,8 @@ class User(Base):
     notifications_enabled: Mapped[bool] = mapped_column(Boolean, default=True)
     preferred_difficulty: Mapped[str | None] = mapped_column(String(20))  # easy, medium, hard
 
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
-    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), default=now_utc)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), default=now_utc)
 
     word_progress = relationship("UserWordProgress", back_populates="user", cascade="all, delete-orphan")
     training_sessions = relationship("TrainingSession", back_populates="user", cascade="all, delete-orphan")
@@ -112,7 +113,7 @@ class UserWordProgress(Base):
     next_review_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     # Временные метки
-    first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    first_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), default=now_utc)
     last_reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     # Relationships
@@ -153,7 +154,7 @@ class TrainingSession(Base):
     correct_answers: Mapped[int] = mapped_column(Integer, default=0)
     wrong_answers: Mapped[int] = mapped_column(Integer, default=0)
 
-    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), default=now_utc)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     duration_seconds: Mapped[int | None] = mapped_column(Integer)  # Длительность сессии
 
